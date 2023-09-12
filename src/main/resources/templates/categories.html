@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Category List</title>
+</head>
+<body>
+<a href="/admin/categories/add">
+    <button>Add Category</button>
+</a>
+<div>
+    <span th:text="${msg}"></span>
+</div>
+<h1>Category List</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+    </tr>
+    <tr th:each="category, iStat : ${categories}">
+        <th th:text="${iStat.index + 1}">1</th>
+        <td th:text="${category.name}"></td>
+        <td>
+            <a th:href="@{/admin/categories/{id}/update(id=${category.id})}">
+                <button>Edit</button>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{/admin/categories/{id}/delete(id=${category.id})}">
+                <button>Delete</button>
+            </a>
+        </td>
+    </tr>
+</table></body>
+</html>
