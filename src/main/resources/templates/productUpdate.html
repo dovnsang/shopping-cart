@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Product</title>
+</head>
+<body>
+<div>
+    <a href="/admin/products">
+        <button>Go back</button>
+    </a>
+</div>
+<form action="/admin/products/update" th:object="${productDTO}" method="post" enctype="multipart/form-data">
+    <input type="hidden" th:field="*{id}">
+    <div>
+        <label>Name</label>
+        <input type="text" th:field="*{name}" required>
+    </div>
+    <div>
+        <label>Category</label>
+        <select th:field="*{categoryId}">
+            <option th:each="category : ${categories}"
+                    th:value="${category.id}"
+                    th:text="${category.name}"></option>
+        </select>
+    </div>
+    <div>
+        <label>In stock</label>
+        <input type="number" th:field="*{quantity}" min="0">
+    </div>
+    <div>
+        <label>Price</label>
+        <input type="number" th:field="*{price}" min=".00" step=".01">
+    </div>
+    <div>
+        <label>Weight</label>
+        <input type="number" th:field="*{weight}" min=".00" step=".01">
+    </div>
+    <div>
+        <label>Description</label>
+        <input type="text" th:field="*{description}">
+    </div>
+    <!--  image preview  -->
+    <div>
+        <label>Image</label>
+        <div>
+            <input id="productImage" class="custom-file-input" type="file" name="imageFile"
+                   accept="image/jpeg, image/png">
+            <!--            <label class="custom-file-label">Choose file</label>-->
+        </div>
+        <div>
+            <img id="imgPreview"
+                 th:src="@{${'/images/products/' + productDTO.imageName}}" width="100px" height="100px">
+        </div>
+        <input type="hidden" th:field="*{imageName}">
+    </div>
+    <div>
+        <button type="submit">Update</button>
+    </div>
+</form>
+<div>
+    <span th:text="${msg}"></span>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script>
+    function readURL(input){
+        if(input.files && input.files[0]){
+            var reader = new FileReader();
+            reader.onload = function(e){
+                $('#imgPreview').attr('src', e.target.result).width(100).height(100);
+            }
+            reader.readAsDataURL(input.files[0])
+        }
+    }
+    $('#productImage').change(function(){
+        readURL(this);
+    });
+    // $(".custom-file-input").on("change", function() {
+    //     console.log($(this).val());
+    //     var fileName = $(this).val().split("\\").pop();
+    //     $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    // });
+</script>
+</body>
+</html>
