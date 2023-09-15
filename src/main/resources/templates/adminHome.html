@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .content {
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <ul>
+            <li class="user-info">
+                <span>Logged user: <span sec:authentication="name">Bob</span></span>
+            </li>
+            <li>
+                <a href="/admin">Home</a>
+            </li>
+            <li>
+                <a href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        <h1>Welcome back, <span th:text="${firstName}">Bob</span></h1>
+        <div class="product">
+            <a href="/admin/products">
+                <button>Manage products</button>
+            </a>
+        </div>
+        <div class="category">
+            <a href="/admin/categories">
+                <button>Manage categories</button>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

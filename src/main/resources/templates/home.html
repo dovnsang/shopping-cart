@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .content {
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div class="container">
+        <div class="navbar">
+            <ul>
+                <li sec:authorize="isAuthenticated()">
+                    <span>Logged user: <span sec:authentication="name">Bob</span></span>
+                </li>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/products">Product List</a>
+                </li>
+                <li sec:authorize="!isAuthenticated()">
+                    <a href="/login">Login</a>
+                </li>
+                <li sec:authorize="isAuthenticated()">
+                    <a href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Welcome back, <span th:text="${firstName}">Bob</span></h1>
+            <div class="product">
+                <a href="/products">
+                    <button>View products</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
