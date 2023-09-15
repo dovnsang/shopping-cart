@@ -1,4 +1,4 @@
-package com.svngdo.shoppingcart.controller;
+package com.sangvndo.shoppingcart.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

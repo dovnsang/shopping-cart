@@ -1,9 +1,8 @@
-package com.svngdo.shoppingcart.controller;
+package com.sangvndo.shoppingcart.controller;
 
-import com.svngdo.shoppingcart.model.Category;
-import com.svngdo.shoppingcart.model.Product;
-import com.svngdo.shoppingcart.repository.CategoryRepository;
-import com.svngdo.shoppingcart.repository.ProductRepository;
+import com.sangvndo.shoppingcart.model.Product;
+import com.sangvndo.shoppingcart.repository.CategoryRepository;
+import com.sangvndo.shoppingcart.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

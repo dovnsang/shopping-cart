@@ -1,10 +1,6 @@
-package com.svngdo.shoppingcart.dto;
+package com.sangvndo.shoppingcart.dto;
 
-import com.svngdo.shoppingcart.model.Category;
 import lombok.Data;
-
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Data
 public class ProductDTO {

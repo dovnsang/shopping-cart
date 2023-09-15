@@ -1,6 +1,6 @@
-package com.svngdo.shoppingcart.repository;
+package com.sangvndo.shoppingcart.repository;
 
-import com.svngdo.shoppingcart.model.User;
+import com.sangvndo.shoppingcart.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

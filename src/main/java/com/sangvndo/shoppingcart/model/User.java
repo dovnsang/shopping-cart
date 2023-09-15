@@ -1,11 +1,10 @@
-package com.svngdo.shoppingcart.model;
+package com.sangvndo.shoppingcart.model;
 
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Data

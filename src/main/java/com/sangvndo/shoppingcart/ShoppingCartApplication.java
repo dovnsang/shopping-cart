@@ -1,4 +1,4 @@
-package com.svngdo.shoppingcart;
+package com.sangvndo.shoppingcart;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

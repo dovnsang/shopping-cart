@@ -1,4 +1,4 @@
-package com.svngdo.shoppingcart.config;
+package com.sangvndo.shoppingcart.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;

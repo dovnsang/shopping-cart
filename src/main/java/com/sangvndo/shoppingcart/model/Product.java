@@ -1,4 +1,4 @@
-package com.svngdo.shoppingcart.model;
+package com.sangvndo.shoppingcart.model;
 
 import lombok.Data;
 

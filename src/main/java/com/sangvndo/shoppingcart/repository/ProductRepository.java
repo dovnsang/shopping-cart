@@ -1,7 +1,6 @@
-package com.svngdo.shoppingcart.repository;
+package com.sangvndo.shoppingcart.repository;
 
-import com.svngdo.shoppingcart.model.Category;
-import com.svngdo.shoppingcart.model.Product;
+import com.sangvndo.shoppingcart.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,9 +1,8 @@
-package com.svngdo.shoppingcart.config;
+package com.sangvndo.shoppingcart.config;
 
-import com.svngdo.shoppingcart.model.User;
-import com.svngdo.shoppingcart.repository.UserRepository;
+import com.sangvndo.shoppingcart.repository.UserRepository;
+import com.sangvndo.shoppingcart.model.User;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

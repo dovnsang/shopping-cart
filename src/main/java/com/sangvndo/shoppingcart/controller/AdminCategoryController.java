@@ -1,16 +1,12 @@
-package com.svngdo.shoppingcart.controller;
+package com.sangvndo.shoppingcart.controller;
 
-import com.svngdo.shoppingcart.model.Category;
-import com.svngdo.shoppingcart.repository.CategoryRepository;
+import com.sangvndo.shoppingcart.model.Category;
+import com.sangvndo.shoppingcart.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.net.CacheRequest;
-import java.util.ArrayList;
-import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
