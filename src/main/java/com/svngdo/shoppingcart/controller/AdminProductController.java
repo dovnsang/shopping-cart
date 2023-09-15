@@ -29,7 +29,7 @@ public class AdminProductController {
                               @ModelAttribute("msg") String msg) {
         model.addAttribute("msg", msg);
         model.addAttribute("products", productRepository.findAll());
-        return "products";
+        return "adminProducts";
     }
 
     @GetMapping("/admin/products/add")

@@ -1,54 +1,83 @@
-<!Dco html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Products</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .content {
+            flex-direction: column;
+            width: 60%;
+        }
+    </style>
 </head>
 <body>
-<a href="/admin/products/add">
-    <button>Add Product</button>
-</a>
-<div>
-    <span th:text="${msg}"></span>
+<div class="container">
+    <div class="navbar">
+        <ul>
+            <li class="user-info">
+                <span>Logged user: <span sec:authentication="name">Bob</span></span>
+            </li>
+            <li>
+                <a href="/admin">Home</a>
+            </li>
+            <li>
+                <a href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        <a href="/admin/products/add">
+            <button>Add Product</button>
+        </a>
+        <div>
+            <span th:text="${msg}"></span>
+        </div>
+        <h1>Product List</h1>
+        <p th:text="${msg}"></pth>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>NAME</th>
+                <th>IMAGE</th>
+                <th>CATEGORY</th>
+                <th>WEIGHT</th>
+                <th>PRICE</th>
+                <th>DESCRIPTION</th>
+            </tr>
+            <tr th:each="product, iStat : ${products}">
+                <th th:text="${iStat.index + 1}">1</th>
+                <td th:text="${product.category.name}"></td>
+                <th>
+                    <img th:src="@{${'/images/products/' + product.imageName}}" style="width: 100px; height: 100px">
+                </th>
+                <th th:text="${product.category.name}"></th>
+                <th th:text="${product.weight}"></th>
+                <th th:text="${product.price}"></th>
+                <th th:text="${product.description}"></th>
+                <td>
+                    <a th:href="@{/admin/products/{id}/update(id=${product.id})}">
+                        <button>Edit</button>
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{/admin/products/{id}/delete(id=${product.id})}">
+                        <button>Delete</button>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
-<h1>Product List</h1>
-<p th:text="${msg}"></pth>
-<table>
-    <tr>
-        <th>#</th>
-        <th>NAME</th>
-        <th>IMAGE</th>
-        <th>CATEGORY</th>
-        <th>WEIGHT</th>
-        <th>IN STOCK</th>
-        <th>PRICE</th>
-        <th>DESCRIPTION</th>
-    </tr>
-    <tr th:each="product, iStat : ${products}">
-        <th th:text="${iStat.index + 1}">1</th>
-        <td th:text="${product.category.name}"></td>
-        <th>
-            <img th:src="@{${'/images/products/' + product.imageName}}" style="width: 100px; height: 100px">
-        </th>
-        <th th:text="${product.category.name}"></th>
-        <th th:text="${product.weight}"></th>
-        <th th:text="${product.quantity}"></th>
-        <th th:text="${product.price}"></th>
-        <th th:text="${product.description}"></th>
-        <td>
-            <a th:href="@{/admin/products/{id}/update(id=${product.id})}">
-                <button>Edit</button>
-            </a>
-        </td>
-        <td>
-            <a th:href="@{/admin/products/{id}/delete(id=${product.id})}">
-                <button>Delete</button>
-            </a>
-        </td>
-    </tr>
-</table>
 </body>
 </html>

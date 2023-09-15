@@ -22,7 +22,7 @@ public class AdminCategoryController {
                                  @ModelAttribute("msg") String msg) {
         model.addAttribute("msg", msg);
         model.addAttribute("categories", categoryRepository.findAll());
-        return "categories";
+        return "adminCategories";
     }
 
     @GetMapping("/admin/categories/add")
