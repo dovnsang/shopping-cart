@@ -53,7 +53,6 @@ public class AdminProductController {
         Product product = new Product();
         product.setName(productDTO.getName());
         product.setCategory(categoryRepository.findById(productDTO.getCategoryId()).get());
-        product.setQuantity(productDTO.getQuantity());
         product.setPrice(productDTO.getPrice());
         product.setWeight(productDTO.getWeight());
         product.setDescription(productDTO.getDescription());
@@ -77,7 +76,6 @@ public class AdminProductController {
         productDTO.setId(p.getId());
         productDTO.setName(p.getName());
         productDTO.setCategoryId(p.getCategory().getId());
-        productDTO.setQuantity(p.getQuantity());
         productDTO.setPrice(p.getPrice());
         productDTO.setWeight(p.getWeight());
         productDTO.setDescription(p.getDescription());
@@ -104,7 +102,6 @@ public class AdminProductController {
         }
         product.setName(productDTO.getName());
         product.setCategory(categoryRepository.findById(productDTO.getCategoryId()).get());
-        product.setQuantity(productDTO.getQuantity());
         product.setPrice(productDTO.getPrice());
         product.setWeight(productDTO.getWeight());
         product.setDescription(productDTO.getDescription());

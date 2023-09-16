@@ -23,12 +23,21 @@ ul {
     background-color: #333;
     color: #fff;
     padding: 10px 20px; /* Add some padding for better readability */
+    display: flex;
+    justify-content: space-between;
 }
-.navbar ul {
+.navbar-left {
+    display: flex;
+    justify-content: flex-start;
+}
+.navbar-right {
     display: flex;
     justify-content: flex-end;
 }
-.navbar li {
+.navbar-left li {
+    margin-right: 20px;
+}
+.navbar-right li {
     margin-left: 20px; /* Add spacing between navbar items */
 }
 .navbar a {

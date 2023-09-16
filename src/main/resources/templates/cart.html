@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cart</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <ul class="navbar-left">
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="/products">Product List</a>
+            </li>
+        </ul>
+        <ul class="navbar-right">
+            <li sec:authorize="isAuthenticated()">
+                <span>Logged user: <span sec:authentication="name">Bob</span></span>
+            </li>
+            <li>
+                <a href="/cart">Cart</a>
+            </li>
+            <li>
+                <a href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        <p><span th:text="${msg}"></span></p>
+        <table>
+            <thead>
+            <th>IMAGE</th>
+            <th>NAME</th>
+            <th>QUANTITY</th>
+            <th>PRICE</th>
+            <th>TOTAL</th>
+            <th></th>
+            <th></th>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${cartItems}">
+                <td>
+                    <a th:href="@{/products/{id}(id=${item.product.id})}">
+                        <img th:src="@{${'/images/products/' + item.product.imageName}}" alt=""
+                             width="100px" height="100px">
+                    </a>
+                </td>
+                <td th:text="${item.product.name}"></td>
+                <td>
+                    <button>+</button>
+                    <input type="number" min="1" name="quantity" th:value="${item.quantity}" required>
+                    <button>-</button>
+                </td>
+                <td th:text="${item.product.price}"></td>
+                <td th:text="${(item.quantity * item.product.price)}"></td>
+                <td>
+                    <form th:action="@{/cart/items/{id}/remove(id=${item.id})}" method="post">
+                        <button type="submit">Remove</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <h3>Total: <span th:text="${total}">00.00</span></h3>
+        <form action="/checkout">
+            <button type="submit">Checkout</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

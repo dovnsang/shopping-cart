@@ -20,9 +20,8 @@ public class HomeController {
         User user = userRepository.findByEmail(authentication.getName());
         if (user != null) {
             model.addAttribute("firstName", user.getFirstName());
-            return "home";
         }
-        return "redirect:/products";
+        return "home";
     }
 
 }

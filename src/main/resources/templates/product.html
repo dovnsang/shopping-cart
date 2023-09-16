@@ -6,19 +6,29 @@
     <meta charset="UTF-8">
     <title>Product</title>
     <link rel="stylesheet" href="/css/style.css">
+    <style>
+        input[type=number]{
+            -moz-appearance: textfield;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
     <div class="navbar">
-        <ul>
-            <li sec:authorize="isAuthenticated()">
-                <span>Logged user: <span sec:authentication="name">Bob</span></span>
-            </li>
+        <ul class="navbar-left">
             <li>
                 <a href="/">Home</a>
             </li>
             <li>
                 <a href="/products">Product List</a>
+            </li>
+        </ul>
+        <ul class="navbar-right">
+            <li sec:authorize="isAuthenticated()">
+                <span>Logged user: <span sec:authentication="name">Bob</span></span>
+            </li>
+            <li>
+                <a href="/cart">Cart</a>
             </li>
             <li sec:authorize="!isAuthenticated()">
                 <a href="/login">Login</a>
@@ -28,24 +38,41 @@
             </li>
         </ul>
     </div>
-    <div class="action">
-        <a href="/products">
-            <button>Go back</button>
-        </a>
-    </div>
-    <div class="content" th:object="${product}">
-        <img th:src="@{${'/images/products/' + product.imageName}}" alt="">
-        <div class="info">
-            <h3 th:text="${'name: ' + product.name}"></h3>
-            <p th:text="${'category: ' + product.category.name}"></p>
-            <p th:text="${'price: ' + product.price}"></p>
-            <p th:text="${'weight: ' + product.weight}"></p>
-            <p th:text="${'description: ' + product.description}"></p>
-            <a th:href="@{/cart/add/{id}(id=${product.id})}">
-                <button>Add to cart</button>
-            </a>
-        </div>
+    <div class="content">
+        <form action="/cart/items/add" method="post" th:object="${product}">
+            <img th:src="@{${'/images/products/' + product.imageName}}" alt="">
+            <div class="info">
+                <input type="hidden" th:field="*{id}">
+                <h3 th:text="${'name: ' + product.name}"></h3>
+                <p th:text="${'category: ' + product.category.name}"></p>
+                <p th:text="${'price: ' + product.price}"></p>
+                <p th:text="${'weight: ' + product.weight}"></p>
+                <p th:text="${'description: ' + product.description}"></p>
+                <div>
+                    <button type="button" class="decreaseQuantity">-</button>
+                    <input id="quantity" type="number" inputmode="numeric" min="1" name="quantity"
+                           th:value="${quantity}"
+                           required>
+                    <button type="button" class="increaseQuantity">+</button>
+                </div>
+                <button type="submit">Add to cart</button>
+            </div>
+            <p><span th:text="${msg}"></span></p>
+        </form>
     </div>
 </div>
+<script>
+    let quantity = document.getElementById("quantity");
+    let btnInc = document.querySelector(".increaseQuantity")
+    let btnDesc = document.querySelector(".decreaseQuantity")
+    btnInc.addEventListener("click", () => {
+        quantity.value++;
+    })
+    btnDesc.addEventListener("click", () => {
+        if (quantity.value > 1) {
+            quantity.value--;
+        }
+    })
+</script>
 </body>
 </html>

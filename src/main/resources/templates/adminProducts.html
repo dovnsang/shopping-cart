@@ -56,15 +56,15 @@
                 <th>DESCRIPTION</th>
             </tr>
             <tr th:each="product, iStat : ${products}">
-                <th th:text="${iStat.index + 1}">1</th>
+                <td th:text="${iStat.index + 1}">1</td>
                 <td th:text="${product.category.name}"></td>
-                <th>
+                <td>
                     <img th:src="@{${'/images/products/' + product.imageName}}" style="width: 100px; height: 100px">
-                </th>
-                <th th:text="${product.category.name}"></th>
-                <th th:text="${product.weight}"></th>
-                <th th:text="${product.price}"></th>
-                <th th:text="${product.description}"></th>
+                </td>
+                <td th:text="${product.category.name}"></td>
+                <td th:text="${product.weight}"></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.description}"></td>
                 <td>
                     <a th:href="@{/admin/products/{id}/update(id=${product.id})}">
                         <button>Edit</button>

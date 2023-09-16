@@ -2,6 +2,7 @@ package com.sangvndo.shoppingcart.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,8 +21,8 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(authorize -> authorize
                         .antMatchers("/h2-console/**").permitAll()
-                        .antMatchers("/images/**", "/css/**", "/js/**").permitAll()
-                        .antMatchers("/", "/products/**").permitAll()
+                        .antMatchers(HttpMethod.GET, "/images/**", "/css/**", "/js/**").permitAll()
+                        .antMatchers(HttpMethod.GET, "/", "/register", "/products/**").permitAll()
                         .antMatchers("/admin/**").hasRole("ADMIN")
                         .antMatchers("/products/**", "/cart/**").hasRole("USER")
                         .anyRequest().authenticated())

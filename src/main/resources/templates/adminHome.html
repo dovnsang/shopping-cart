@@ -18,12 +18,14 @@
 <body>
 <div class="container">
     <div class="navbar">
-        <ul>
-            <li class="user-info">
-                <span>Logged user: <span sec:authentication="name">Bob</span></span>
-            </li>
+        <ul class="navbar-left">
             <li>
                 <a href="/admin">Home</a>
+            </li>
+        </ul>
+        <ul class="navbar-right">
+            <li>
+                <span>Logged user: <span sec:authentication="name">Bob</span></span>
             </li>
             <li>
                 <a href="/logout">Logout</a>
